@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Cart</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            margin:0;
+            background:#f3f4f6;
+        }
+
+        .navbar{
+            background:#264b8f;
+            color:white;
+            padding:15px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+        }
+
+        .cart-container{
+            padding:40px;
+            min-height:500px;
+        }
+
+        .cart-box{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:10px;
+        }
+
+        .footer{
+            background:#264b8f;
+            color:white;
+            padding:40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h2>VehicleMart</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/cart/">Cart</a>
+            <a href="/profile/">Profile</a>
+            <a href="/logout/">Logout</a>
+        </div>
+
+    </div>
+
+    <!-- CART -->
+
+    <div class="cart-container">
+
+        <h1>Your Cart</h1>
+
+        {% for item in cart_items %}
+
+        <div class="cart-box">
+
+            <img src="{{ item.product.image.url }}"
+                 width="120">
+
+            <h2>{{ item.product.name }}</h2>
+
+            <p>₹{{ item.product.price }}</p>
+
+        </div>
+
+        {% empty %}
+
+        <h2>Your Cart Is Empty 🛒</h2>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <h2>VehicleMart</h2>
+
+        <p>Your trusted platform to buy and sell vehicles easily.</p>
+
+    </div>
+
+</body>
+
+</html>

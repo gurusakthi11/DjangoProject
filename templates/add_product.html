@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Add Product</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#f3f4f6;
+        }
+
+        /* Navbar */
+
+        nav{
+            background:#111827;
+            color:white;
+            padding:15px 50px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        nav h2{
+            margin:0;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-weight:bold;
+        }
+
+        /* Form Section */
+
+        .container{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:60px 20px;
+            min-height:80vh;
+        }
+
+        .form-box{
+            background:white;
+            padding:40px;
+            width:400px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-box h2{
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;}
+
+select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+        button{
+            width:100%;
+            padding:12px;
+            background:#2563eb;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        /* Footer */
+
+        footer{
+            background:#111827;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <h2>VehicleWorld</h2>
+
+        <div>
+
+            <a href="/">Home</a>
+
+            <a href="/cart/">Cart</a>
+
+            <a href="/profile/">Profile</a>
+
+            <a href="/logout/">Logout</a>
+
+        </div>
+
+    </nav>
+
+    <!-- Form -->
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h2>Add Vehicle</h2>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <input type="text"
+                       name="name"
+                       placeholder="Vehicle Name">
+
+                <input type="number"
+                       name="price"
+                       placeholder="Price">
+
+                <select name="category">
+
+    <option value="Car">Car</option>
+
+    <option value="Bike">Bike</option>
+
+    <option value="SUV">SUV</option>
+
+    <option value="Truck">Truck</option>
+
+    <option value="Scooter">Scooter</option>
+
+    <option value="Electric Vehicle">
+        Electric Vehicle
+    </option>
+
+</select>
+                <input type="file"
+                       name="image">
+
+                <button type="submit">
+
+                    Add Product
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>© 2026 VehicleWorld</p>
+
+    </footer>
+
+</body>
+
+</html>
