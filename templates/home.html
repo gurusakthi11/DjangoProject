@@ -138,9 +138,12 @@ button{
             <span>Welcome, {{ user.username }}</span>
 
             <a href="/profile/">Profile</a>
-            <a href="/cart/">Cart</a>
 
-            {% if user.profile.role == "admin" %}
+            {% if not user.is_staff %}
+                <a href="/cart/">Cart</a>
+            {% endif %}
+
+            {% if user.is_staff %}
                 <a href="/add-product/">Add Product</a>
             {% endif %}
 
@@ -188,14 +191,19 @@ button{
 
             <p>{{ product.category }}</p>
 
+        <a href="/edit-product/{{ product.id }}/">
+        <button>
+            Edit Product
+        </button>
+        </a>
             
-            {% if user.profile.role == "admin" %}
-                <a href="/delete-product/{{ product.id }}/">
-                    <button style="background:red;">
-                        Delete Product
-                    </button>
-                </a>
-            {% endif %}
+    {% if user.is_staff %}
+        <a href="/delete-product/{{ product.id }}/">
+        <button style="background:red;">
+            Delete Product
+        </button>
+    </a>
+    {% endif %}
 
         </div>
 

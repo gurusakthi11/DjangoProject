@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+</head>
+<body>
+
+    <h1>Edit Product</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <input type="text"
+               name="name"
+               value="{{ product.name }}"
+               placeholder="Product Name">
+
+        <br><br>
+
+        <input type="text"
+               name="price"
+               value="{{ product.price }}"
+               placeholder="Price">
+
+        <br><br>
+
+        <input type="text"
+               name="category"
+               value="{{ product.category }}"
+               placeholder="Category">
+
+        <br><br>
+
+        <img src="{{ product.image.url }}"
+             width="200">
+
+        <br><br>
+
+        <input type="file" name="image">
+
+        <br><br>
+
+        <button type="submit">
+            Update Product
+        </button>
+
+    </form>
+
+</body>
+</html>

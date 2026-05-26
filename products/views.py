@@ -82,7 +82,7 @@ def profile(request):
 
 def add_product(request):
 
-    if request.user.profile.role != "admin":
+    if not request.user.is_staff:
         return redirect('/')
 
     if request.method == 'POST':
@@ -143,6 +143,31 @@ def product_detail(request, product_id):
     product = Product.objects.get(id=product_id)
 
     return render(request, 'product_detail.html', {
+        'product': product
+    })
+
+@login_required
+def edit_product(request, product_id):
+
+    if not request.user.is_staff:
+        return redirect('/')
+
+    product = Product.objects.get(id=product_id)
+
+    if request.method == 'POST':
+
+        product.name = request.POST['name']
+        product.price = request.POST['price']
+        product.category = request.POST['category']
+
+        if request.FILES.get('image'):
+            product.image = request.FILES['image']
+
+        product.save()
+
+        return redirect('/')
+
+    return render(request, 'edit_product.html', {
         'product': product
     })
 
